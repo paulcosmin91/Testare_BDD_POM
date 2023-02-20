@@ -1,0 +1,6 @@
+{
+  "browser": "chrome",
+  "headless_mode": false,
+  "base_url": "https://www.restaurantbucovina.ro/Account/login",
+  "timeout": 10
+}
