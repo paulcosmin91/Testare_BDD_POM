@@ -1,6 +1,5 @@
 import json
 import pytest
-import os
 import selenium.webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
@@ -22,10 +21,9 @@ def config():
 
 @pytest.fixture()
 def setup(request, config):
-    driver = browser(config)
     driver.implicitly_wait(config["timeout"])
     request.cls.driver = driver
-    if config["browser"] == "firefox":
+    if config["browser"] == "chrome":
         driver.maximize_window()
     yield
     driver.quit()
@@ -40,6 +38,7 @@ def browser(config):
             options.add_argument("--headless")
         driver = selenium.webdriver.Chrome(service=Service(ChromeDriverManager().install()), chrome_options=options)
         driver.implicitly_wait(10)
+        driver.maximize_window()
         yield driver
         driver.quit()
         return driver
