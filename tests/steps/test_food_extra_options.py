@@ -19,13 +19,13 @@ def load_page(browser):
     print("\n---Step 1---Given---Pass---")
 
 
-@when(parsers.cfparse('the user is logged in as "{username}"'))
+@given(parsers.cfparse('the user is logged in as "{username}"'))
 def check_user_name_displayed(browser):
     assert MenuPage(browser).get_account_name() == SignIn.TEST_USERNAME
     print("\n---Step 2---Given---Pass---")
 
 
-@when(parsers.cfparse('the user clicks "{button}" named "{name}"'))
+@given(parsers.cfparse('the user clicks "{button}" named "{name}"'))
 def check_button_name_and_click_it(browser, button, name):
     button_name = browser.find_element(By.XPATH, f"{MainPageLocators.menu_button.format(button)}").text
     assert button_name == name
@@ -33,7 +33,7 @@ def check_button_name_and_click_it(browser, button, name):
     print("\n---Step 3---When---Pass---")
 
 
-@then(parsers.cfparse('the user is redirected to "{page}"'))
+@given(parsers.cfparse('the user is redirected to "{page}"'))
 def check_user_redirected_to_page(browser, page):
     assert browser.current_url == page, "Main page URL is not ok."
     print("\n---Step 4---Then---Pass---")

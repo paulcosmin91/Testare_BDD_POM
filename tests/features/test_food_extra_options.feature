@@ -2,9 +2,9 @@ Feature: Test extra options
 
   Background:
     Given open the main page
-    When the user is logged in as "ionionica"
-    And the user clicks "Ciorbe" named "Ciorbe"
-    Then the user is redirected to "https://www.restaurantbucovina.ro/menu?categoryID=63893"
+    Given the user is logged in as "ionionica"
+    Given the user clicks "Ciorbe" named "Ciorbe"
+    Given the user is redirected to "https://www.restaurantbucovina.ro/menu?categoryID=63893"
 
   Scenario Outline: Verify food options for ciorbe
     Given the user selects food name "<food>"
